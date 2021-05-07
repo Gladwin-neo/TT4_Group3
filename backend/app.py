@@ -37,5 +37,33 @@ def login():
 
     return response.text
 
+@app.route("/transactions/view", methods=["POST"])
+def view_transactions():
+    if not (request.method == "POST"):
+        return "Wrong HTPP method"
+
+    view_transaction_details = json.loads(request.data)
+    custID = view_transaction_details['custID']
+    accountKey = view_transaction_details['accountKey']
+
+    API_ENDPOINT = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/view"
+
+    body = {
+        "custID" : custID, 
+        "accountKey" : accountKey
+    }
+
+    headers = {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
+    if (response.status_code == 403) :
+        return "Credentials provided are invalid"
+
+    return response.text
+
+
 if (__name__) == "__main__":
     app.run(debug=True)
