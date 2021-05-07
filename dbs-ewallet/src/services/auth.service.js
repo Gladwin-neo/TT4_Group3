@@ -28,6 +28,8 @@ const login = (userName, userPass) => {
       console.log(JSON.stringify(response.data.data))
       if (response.data.data.accountKey) {
         localStorage.setItem("user", JSON.stringify(response.data.data));
+        let data_user = JSON.stringify(response.data.data);
+        localStorage.setItem("Name", data_user.lastName + " " + data_user.firstName)
       }
 
       return response.data;

@@ -11,6 +11,7 @@ import {
 export default function TransactionDetails(){
 
     const [transactions, setTransactions]= useState([]);
+    const [transactions_translated, setTransactions_translated]= useState([]);
 
     const classes = makeStyles({
         text: {
@@ -45,8 +46,8 @@ export default function TransactionDetails(){
         }
 
         fetchTransactionDetails();
+        
     }, []);
-
 
     return(
     <div className="container">

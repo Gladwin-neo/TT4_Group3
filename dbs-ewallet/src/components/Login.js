@@ -67,7 +67,9 @@ const Login = (props) => {
     } else {
       setLoading(false);
     }
+    let data_user = JSON.stringify(username);
     localStorage.setItem("username", JSON.stringify(username));
+    localStorage.setItem("Name", data_user.lastName + " " + data_user.firstName);
     //props.username = username;
   };
 
