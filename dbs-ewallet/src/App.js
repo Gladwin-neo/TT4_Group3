@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import acctDetails from "./components/accountDetails";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -90,6 +91,7 @@ const App = () => {
               <Route exact path={["/", "/home"]} component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/transactions" component={TransactionDetails}/>
+              <Route exact path="/accounts" component={acctDetails}/>
             </Switch>
           </div>
         </div>
