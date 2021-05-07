@@ -26,12 +26,12 @@ export default function AcctDetails() {
         }
         const fetchAcctDets = async() => {
             const accountDetails = await fetch (
-                'https://corsanywhere.herokuapp.com/http://ec2-3-81-231-62.compute-1.amazonaws.com:5000/add',methods
+                'https://corsanywhere.herokuapp.com/http://ec2-3-81-231-62.compute-1.amazonaws.com:5000/balance',methods
             );
             const account = await accountDetails.json();
             console.log('Account Details: ');
-            console.log(account);
-            setAccount(account);
+            console.log(account.data);
+            setAccount(account.data);
             
         }
         fetchAcctDets()
