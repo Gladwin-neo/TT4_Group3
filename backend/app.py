@@ -10,6 +10,12 @@ API_KEY = "895Z21koZEasz7rGcQnPw9Z3BgZUoTln4Lnda9jH"
 def index():
     return "hello world"
 
+def get_response(status, data):
+    return {
+        "status": status,
+        "data": data
+    }
+
 @app.route("/login", methods=["POST"])
 def login():
     if not (request.method == "POST"):
@@ -34,8 +40,9 @@ def login():
     response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
     if (response.status_code == 403) :
         return "Invalid login credentials!"
-
-    return response.text
+    print(json.loads(response.text))
+    return get_response(200, json.loads(response.text))
+    # return response.text
 
 @app.route("/balance", methods=["POST"])
 def get_balance():
