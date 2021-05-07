@@ -46,7 +46,6 @@ def login():
         return "Invalid login credentials!"
     print(json.loads(response.text))
     return get_response(200, json.loads(response.text))
-    # return response.text
 
 # Get Account Balances API
 @app.route("/balance", methods=["POST"])
@@ -70,7 +69,6 @@ def get_balance():
     if (response.status_code == 400):
         return "Invalid customerId!"
     return get_response(200, json.loads(response.text))
-    # return response.text
 
 # View transactions API
 @app.route("/transactions", methods=["POST"])
