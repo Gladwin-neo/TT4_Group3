@@ -46,7 +46,7 @@ const App = () => {
         <div>
           <nav className="navbar navbar-expand navbar-dark bg-dark">
             <Link to={"/"} className="navbar-brand">
-              <img className="photo" src = "/logo192.png" alt = "Logo"/>
+              <img className="photo" src = "/dbs.png" alt = "Logo"/>
               TransactionApp
             </Link>
             <div className="navbar-nav mr-auto">
@@ -55,15 +55,30 @@ const App = () => {
                   Home
                 </Link>
               </li>
+              {currentUser && (
+                <li className="nav-item">
+                  <Link to={"/Transfer"} className="nav-link">
+                    Transfer Funds
+                  </Link>
+                </li>
+              )}
+              {currentUser &&(
+                <li className="nav-item">
+                  <Link to={"/TransferHistory"} className="nav-link">
+                    History
+                  </Link>
+                </li>
+              )}
             </div>
+            
 
             {currentUser ? (
               <div className="navbar-nav ml-auto">
-                {/* <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
+                <li className="nav-item">
+                  <Link to={"/accounts"} className="nav-link">
                     {currentUser.username}
                   </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
                   <a href="/login" className="nav-link" onClick={logOut}>
                     LogOut

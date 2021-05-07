@@ -67,8 +67,8 @@ const Login = (props) => {
     } else {
       setLoading(false);
     }
-    console.log(username);
-    props.username = username;
+    localStorage.setItem("username", JSON.stringify(username));
+    //props.username = username;
   };
 
   if (isLoggedIn) {
