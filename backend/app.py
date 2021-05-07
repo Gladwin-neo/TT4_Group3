@@ -12,12 +12,14 @@ API_KEY = "895Z21koZEasz7rGcQnPw9Z3BgZUoTln4Lnda9jH"
 def index():
     return "hello world"
 
+# Tidy the json body data
 def get_response(status, data):
     return {
         "status": status,
         "data": data
     }
 
+# Login API
 @app.route("/login", methods=["POST"])
 def login():
     if not (request.method == "POST"):
@@ -46,6 +48,7 @@ def login():
     return get_response(200, json.loads(response.text))
     # return response.text
 
+# Get Account Balances API
 @app.route("/balance", methods=["POST"])
 def get_balance():
     API_ENDPOINT = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/accounts"
@@ -69,6 +72,7 @@ def get_balance():
     return get_response(200, json.loads(response.text))
     # return response.text
 
+# View transactions API
 @app.route("/transactions", methods=["POST"])
 def view_transactions():
     if not (request.method == "POST"):
@@ -96,6 +100,7 @@ def view_transactions():
     
     return get_response(200, json.loads(response.text))
 
+# Add transactions API
 @app.route("/add", methods=["POST"])
 def add_transactions():
     if not (request.method == "POST"):
