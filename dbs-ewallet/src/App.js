@@ -1,7 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Router, Switch, Route, Link } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
+  const { user: currentUser } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  
   return (
     <div className="App">
       <header className="App-header">
