@@ -1,4 +1,16 @@
 import React, {useEffect, useState} from 'react';
+import { 
+    Typography,
+    Box,
+    Checkbox,
+    Grid,
+    TablePagination,
+    makeStyles,
+ } from "@material-ui/core";
+import { mockHistoryArray } from "../mockdata/mockHistory";
+import {TransactionHistory} from "../models/History"
+import HistoryGraph from "./graph/BarGraph"
+
 
 export default function TransactionDetails(){
     const [transactions, setTransactions]= useState([]);
@@ -26,26 +38,54 @@ export default function TransactionDetails(){
     }
 
     return(
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>PayeeID</th>
-                <th>Amount</th>
-                <th>eGift</th>
-                <th>message</th>
-            </tr>
-
-            {
-                transactions.map((transactions)=>(
-                    <th>{transactions.date}</th>,
-                    <th>{transactions.payeeID}</th>,
-                    <th>${transactions.amount}</th>,
-                    <th>{transactions.eGift}</th>,
-                    <th>{transactions.message}</th>
-                ))
-            }
-
-        </table>
+        <div>
+        <HistoryGraph data = {data} />
+    <div className="container">
+      <header className="jumbotron">
+        <Typography>
+            <h2>Transaction History</h2>
+            <Box my="24px" width="100%" className={classes.text}>
+                <Grid container spacing={1}>
+                    <Grid item md={3} xs={3}>
+                        DATE
+                    </Grid>
+                    <Grid item md={4} xs={4}>
+                        PAYEE NAME
+                    </Grid>
+                    <Grid item md={3} xs={3}>
+                        AMOUNT ($SGD)
+                    </Grid>
+                    <Grid item md={1} xs={1}>
+                        Type
+                    </Grid>
+                </Grid> 
+            </Box>
+            {transactions.map((transactions) => {
+                //const real_date = new Date(history.date);
+                {/* console.log(history.date, " to ", real_date); */}
+                return (
+                    <Box py="12px" my="8px" >
+                    <Grid container spacing={1} alignItems="center" className={classes.text}>
+                        <Grid item md={3} xs={3}>
+                            {transactions.date.toLocaleDateString()}
+                        </Grid>
+                        <Grid item md={4} xs={4}>
+                            {transactions.payeeID}
+                        </Grid>
+                        <Grid item md={3} xs={3}>
+                            {transactions.amount}
+                        </Grid>
+                        <Grid item md={1} xs={1}>
+                            Transaction
+                        </Grid>
+                    </Grid>
+                    </Box>
+                );
+                })}
+        </Typography>
+      </header>
+    </div>
+    </div>
     )
 
 
