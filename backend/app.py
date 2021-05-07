@@ -4,7 +4,7 @@ import jwt
 
 app = Flask(__name__)
 
-app.config['SERVER_NAME'] = 'ec2-3-81-231-62.compute-1.amazonaws.com:5000'
+# app.config['SERVER_NAME'] = 'ec2-3-81-231-62.compute-1.amazonaws.com:5000'
 
 API_KEY = "895Z21koZEasz7rGcQnPw9Z3BgZUoTln4Lnda9jH"
 
