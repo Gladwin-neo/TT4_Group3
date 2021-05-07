@@ -45,3 +45,13 @@
       height:42px;
       font-size:15pt;
       }
+
+      #photo_1 {
+        height: 100px;
+        width: 100px; 
+   }
+
+   #photo_2 {
+    height: 100px;
+    width: 90px; 
+}
