@@ -44,7 +44,6 @@ def login():
     response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
     if (response.status_code == 403) :
         return "Invalid login credentials!"
-    print(json.loads(response.text))
     return get_response(200, json.loads(response.text))
 
 # Get Account Balances API
