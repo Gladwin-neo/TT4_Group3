@@ -37,6 +37,29 @@ def login():
 
     return response.text
 
+@app.route("/balance", methods=["POST"])
+def get_balance():
+    API_ENDPOINT = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/accounts"
+
+    get_account_balance = json.loads(request.data)
+    custID = get_account_balance['custID']
+    accountKey = get_account_balance['accountKey']
+
+    headers = {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json'
+    }   
+    body = {
+        "custID": custID,
+        "accountKey" : accountKey
+    }
+
+    response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
+    if (response.status_code == 400):
+        return "Invalid customerId!"
+
+    return response.text
+
 @app.route("/transactions/view", methods=["POST"])
 def view_transactions():
     if not (request.method == "POST"):
