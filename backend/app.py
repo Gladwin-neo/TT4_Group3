@@ -87,9 +87,40 @@ def view_transactions():
 
     return response.text
 
+@app.route("/add", methods=["POST"])
+def add_transactions():
+    if not (request.method == "POST"):
+        return "Wrong HTTP method"
 
+    add_details = json.loads(request.data)
+    custID = add_details['custID']
+    accountKey = add_details['accountKey']
+    payeeID = add_details['payeeID']
+    amount = add_details['amount']
+    eGift = add_details['eGift']
+    message = add_details['message']
 
+    API_ENDPOINT = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/add"
 
+    body = {
+        "custID" : custID, 
+        "accountKey" : accountKey,
+        "payeeID" : payeeID,
+        "amount" : amount,
+        "eGift" : eGift,
+        "message" : message
+    }
+
+    headers = {
+        'x-api-key': API_KEY,
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
+    if (response.status_code == 403) :
+        return "Credentials provided are invalid"
+
+    return response.text
 
 if (__name__) == "__main__":
     app.run(debug=True)
