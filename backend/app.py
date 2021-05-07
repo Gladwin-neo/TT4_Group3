@@ -64,8 +64,8 @@ def get_balance():
     response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
     if (response.status_code == 400):
         return "Invalid customerId!"
-
-    return response.text
+    return get_response(200, json.loads(response.text))
+    # return response.text
 
 @app.route("/transactions", methods=["POST"])
 def view_transactions():
