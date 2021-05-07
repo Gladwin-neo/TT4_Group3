@@ -7,8 +7,6 @@ import {
     TablePagination,
     makeStyles,
  } from "@material-ui/core";
-import { mockHistoryArray } from "../mockdata/mockHistory";
-
 
 export default function TransactionDetails(){
 
@@ -39,11 +37,11 @@ export default function TransactionDetails(){
         }
 
         const fetchTransactionDetails=async()=>{
-            const transactDetail = await fetch('https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek/transactions/view', requestTransactions);
+            const transactDetail = await fetch('https://corsanywhere.herokuapp.com/http://ec2-3-81-231-62.compute-1.amazonaws.com:5000/transactions', requestTransactions);
             const transactions = await transactDetail.json();
             console.log('Transaction Details: ');
-            console.log(transactions);
-            setTransactions(transactions);
+            console.log(transactions.data);
+            setTransactions(transactions.data);
         }
 
         fetchTransactionDetails();
@@ -75,13 +73,11 @@ export default function TransactionDetails(){
                 </Grid> 
             </Box>
             {transactions.map((transactions) => {
-                //const real_date = new Date(history.date);
-                {/* console.log(history.date, " to ", real_date); */}
                 return (
                     <Box py="12px" my="8px" >
                     <Grid container spacing={1} alignItems="center" className={classes.text}>
                         <Grid item md={2} xs={2}>
-                            {transactions.datetime}
+                            {Date(transactions.datetime)}
                         </Grid>
                         <Grid item md={2} xs={2}>
                             {transactions.payeeID}
@@ -103,27 +99,6 @@ export default function TransactionDetails(){
       </header>
     </div>
   );
-    //     <table>
-    //         <tbody>
-    //         <tr>
-    //             <th>Date</th>
-    //             <th>payeeID</th>
-    //             <th>Amount</th>
-    //             <th>eGift</th>
-    //             <th>message</th>
-    //         </tr>
-            
-    //         {transactions.map(transactions=>(
-    //         <tr>
-    //                 <th>{transactions.datetime}</th>
-    //                 <th>{transactions.payeeID}</th>
-    //                 <th>${transactions.amount}</th>
-    //                 <th>{transactions.eGift.toString()}</th>
-    //                 <th>{transactions.message}</th>
-    //         </tr>))}
-    //         </tbody>
-    // </table>
-    // )
 
 
 }
