@@ -13,7 +13,7 @@ def index():
 @app.route("/login", methods=["POST"])
 def login():
     if not (request.method == "POST"):
-        return "Wrong HTPP method"
+        return "Wrong HTTP method"
 
     login_data = json.loads(request.data)
     userName = login_data['userName']
@@ -37,10 +37,10 @@ def login():
 
     return response.text
 
-@app.route("/transactions/view", methods=["POST"])
+@app.route("/transactions", methods=["POST"])
 def view_transactions():
     if not (request.method == "POST"):
-        return "Wrong HTPP method"
+        return "Wrong HTTP method"
 
     view_transaction_details = json.loads(request.data)
     custID = view_transaction_details['custID']
@@ -63,6 +63,9 @@ def view_transactions():
         return "Credentials provided are invalid"
 
     return response.text
+
+
+
 
 
 if (__name__) == "__main__":
