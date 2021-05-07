@@ -91,8 +91,8 @@ def view_transactions():
     response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
     if (response.status_code == 403) :
         return "Credentials provided are invalid"
-
-    return response.text
+    
+    return get_response(200, json.loads(response.text))
 
 @app.route("/add", methods=["POST"])
 def add_transactions():
@@ -127,7 +127,7 @@ def add_transactions():
     if (response.status_code == 403) :
         return "Credentials provided are invalid"
 
-    return response.text
+    return get_response(200, json.loads(response.text))
 
 if (__name__) == "__main__":
     app.run(debug=True)
