@@ -46,7 +46,7 @@ const App = () => {
           <nav className="navbar navbar-expand navbar-dark bg-dark">
             <Link to={"/"} className="navbar-brand">
               <img className="photo" src = "/logo192.png" alt = "Logo"/>
-              FatCatSwapExpress
+              TransactionApp
             </Link>
             <div className="navbar-nav mr-auto">
               <li className="nav-item">
