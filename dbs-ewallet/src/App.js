@@ -57,7 +57,7 @@ const App = () => {
               </li>
               {currentUser && (
                 <li className="nav-item">
-                  <Link to={"/Transfer"} className="nav-link">
+                  <Link to={"/transactions"} className="nav-link">
                     Transfer Funds
                   </Link>
                 </li>
