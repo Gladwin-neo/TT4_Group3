@@ -19,7 +19,7 @@ const Home = (props) => {
 
   useEffect(() => {
     if(user == '' || user == null){
-      props.history.push("/login");
+      //props.history.push("/login");
     }
     setNewsContext(mockNewsParagraph)
   }, []);

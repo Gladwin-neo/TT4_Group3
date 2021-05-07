@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://ipllrj2mq8.execute-api.ap-southeast-1.amazonaws.com/techtrek";
+const API_URL = "https://corsanywhere.herokuapp.com/http://ec2-3-81-231-62.compute-1.amazonaws.com:5000";
 const api_key = "895Z21koZEasz7rGcQnPw9Z3BgZUoTln4Lnda9jH";
 
 
@@ -25,9 +25,9 @@ const login = (userName, userPass) => {
       'x-api-key': api_key
     }})
     .then((response) => {
-      console.log(JSON.stringify(response.data))
-      if (response.data.accountKey) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+      console.log(JSON.stringify(response.data.data))
+      if (response.data.data.accountKey) {
+        localStorage.setItem("user", JSON.stringify(response.data.data));
       }
 
       return response.data;
