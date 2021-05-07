@@ -67,6 +67,7 @@ const Login = (props) => {
     } else {
       setLoading(false);
     }
+    console.log(username);
     props.username = username;
   };
 
