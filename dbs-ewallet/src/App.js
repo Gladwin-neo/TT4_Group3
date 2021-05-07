@@ -15,6 +15,7 @@ import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 
 import { history } from "./helpers/history";
+import TransactionDetails from './components/TransactionDetails';
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -90,6 +91,7 @@ const App = () => {
             <Switch>
               <Route exact path={["/", "/home"]} component={Home} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/transactions" component={TransactionDetails}/>
             </Switch>
           </div>
         </div>
