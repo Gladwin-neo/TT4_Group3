@@ -6,12 +6,6 @@ app = Flask(__name__)
 
 API_KEY = "895Z21koZEasz7rGcQnPw9Z3BgZUoTln4Lnda9jH"
 
-# def get_response(status, data):
-#     return {
-#         "status": status,
-#         "data": data
-#     }
-
 @app.route('/')
 def index():
     return "hello world"
@@ -19,8 +13,7 @@ def index():
 @app.route("/login", methods=["POST"])
 def login():
     if not (request.method == "POST"):
-        return "Error"
-        # return get_response(400, "Invalid HTTP verb.")
+        return "Wrong HTPP method"
 
     login_data = json.loads(request.data)
     userName = login_data['userName']
@@ -40,8 +33,8 @@ def login():
 
     response = requests.request("POST", API_ENDPOINT, headers=headers, data=json.dumps(body))
     if (response.status_code == 403) :
-        return "Error"
-    
+        return "Invalid login credentials!"
+
     return response.text
 
 if (__name__) == "__main__":
